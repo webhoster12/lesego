@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-image: url('image.jpeg'); /* Replace with your background image URL */
+            background-size: cover;
+            color: #333;
+        }
+        header {
+            background: rgba(255, 192, 203, 0.8); /* Light pink with transparency */
+            color: #333;
+            padding: 10px 0;
+            text-align: center;
+            border-radius: 10px;
+        }
+        section {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.9); /* White with transparency */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        nav {
+            text-align: center; /* Center the navigation */
+            margin-top: 20px;
+        }
+        input, textarea {
+            width: calc(100% - 22px); /* Full width minus padding and border */
+            padding: 10px;
+            margin: 10px 0; /* Space between elements */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box; /* Include padding and border in the element's total width and height */
+        }
+        .heart {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none; /* Remove underline */
+            margin: 0 20px; /* Spacing between hearts */
+            width: 100px; /* Width for clickable area */
+            height: 100px; /* Height for clickable area */
+            position: relative; /* Positioning for label */
+            transition: transform 0.3s; /* Smooth hover effect */
+            background-color: rgba(255, 105, 180, 0.8); /* Initial heart background color */
+            border-radius: 50%; /* Make it circular */
+            transform: rotate(-45deg); /* Rotate for heart shape */
+        }
+        .heart::before,
+        .heart::after {
+            content: '';
+            background-color: rgba(255, 105, 180, 0.8); /* Heart color */
+            border-radius: 50%; /* Make the pseudo-elements circular */
+            position: absolute;
+        }
+        .heart::before {
+            width: 100px; /* Width of the left half */
+            height: 100px; /* Height of the left half */
+            left: 0; /* Position to the left */
+        }
+        .heart::after {
+            width: 100px; /* Width of the right half */
+            height: 100px; /* Height of the right half */
+            top: 0; /* Position at the top */
+        }
+        .label {
+            position: absolute;
+            bottom: 30px; /* Position label towards bottom */
+            left: 50%;
+            transform: translateX(-50%);
+            color: white; /* Label color */
+            font-weight: bold;
+            font-size: 16px; /* Adjust label size */
+            text-align: center; /* Center text */
+            line-height: 1.2; /* Line height for spacing */
+        }
+        .heart:hover {
+            transform: scale(1.1) rotate(-45deg); /* Slightly enlarge on hover */
+            background-color: rgba(255, 20, 147, 1); /* Darker background on hover */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>About Me</h1>
+    </header>
+    <section>
+        <h2>Personal Information</h2>
+        <p>Name: Rabotha Lesego</p>
+        <p>Contact: <input type="text" id="contact" placeholder="Enter your contact" /></p>
+        <p>Short Bio:</p>
+        <textarea id="bio" placeholder="Enter a short bio"></textarea>
+
+        <h2>Education</h2>
+        <input type="text" id="education" placeholder="Enter your education" />
+
+        <h2>Work Experience</h2>
+        <input type="text" id="work" placeholder="Enter your work experience" />
+
+        <h2>Skills</h2>
+        <textarea id="skills" placeholder="Enter your skills (comma separated)"></textarea>
+
+        <h2>Projects</h2>
+        <input type="text" id="projects" placeholder="Enter your projects" />
+
+        <button onclick="saveData()">Save Data</button>
+        <button onclick="downloadPDF()">Download PDF</button>
+    </section>
+    <nav>
+        <a class="heart" href="index.html">
+            <span class="label">Home</span>
+        </a>
+        <a class="heart" href="page1.html">
+            <span class="label">About Me</span>
+        </a>
+    </nav>
+
+    <script>
+        // Function to save data to localStorage
+        function saveData() {
+            const contact = document.getElementById('contact').value;
+            const bio = document.getElementById('bio').value;
+            const education = document.getElementById('education').value;
+            const work = document.getElementById('work').value;
+            const skills = document.getElementById('skills').value;
+            const projects = document.getElementById('projects').value;
+
+            localStorage.setItem('contact', contact);
+            localStorage.setItem('bio', bio);
+            localStorage.setItem('education', education);
+            localStorage.setItem('work', work);
+            localStorage.setItem('skills', skills);
+            localStorage.setItem('projects', projects);
+            alert("Data saved successfully!");
+        }
+
+        // Function to load data from localStorage
+        function loadData() {
+            document.getElementById('contact').value = localStorage.getItem('contact') || '';
+            document.getElementById('bio').value = localStorage.getItem('bio') || '';
+            document.getElementById('education').value = localStorage.getItem('education') || '';
+            document.getElementById('work').value = localStorage.getItem('work') || '';
+            document.getElementById('skills').value = localStorage.getItem('skills') || '';
+            document.getElementById('projects').value = localStorage.getItem('projects') || '';
+        }
+
+        // Function to download data as a PDF
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF();
+
+            doc.text("CV of Rabotha Lesego", 10, 10);
+            doc.text("Contact: " + document.getElementById('contact').value, 10, 20);
+            doc.text("Short Bio: " + document.getElementById('bio').value, 10, 30);
+            doc.text("Education: " + document.getElementById('education').value, 10, 40);
+            doc.text("Work Experience: " + document.getElementById('work').value, 10, 50);
+            doc.text("Skills: " + document.getElementById('skills').value, 10, 60);
+            doc.text("Projects: " + document.getElementById('projects').value, 10, 70);
+
+            doc.save("Rabotha_Lesego_CV.pdf");
+        }
+
+        // Load data when the page loads
+        window.onload = loadData;
+    </script>
+</body>
+</html>

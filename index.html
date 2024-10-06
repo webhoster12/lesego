@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-image: url('image.jpeg'); /* Replace with your background image URL */
+            background-size: cover;
+            color: #333;
+        }
+        header {
+            background: rgba(255, 192, 203, 0.8); /* Light pink with transparency */
+            color: #333;
+            padding: 10px 0;
+            text-align: center;
+            border-radius: 10px;
+        }
+        section {
+            margin-top: 20px;
+            background: rgba(255, 255, 255, 0.9); /* White with transparency */
+            padding: 20px;
+            border-radius: 10px;
+        }
+        nav {
+            text-align: center; /* Center the navigation */
+            margin-top: 20px;
+        }
+        .heart {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            color: white; /* Text color */
+            font-size: 20px; /* Increased font size */
+            text-decoration: none; /* Remove underline */
+            margin: 0 20px; /* Spacing between hearts */
+            position: relative; /* Positioning for label */
+            width: 100px; /* Width for clickable area */
+            height: 100px; /* Height for clickable area */
+            border-radius: 50%; /* Make it circular */
+            background-color: rgba(255, 105, 180, 0.8); /* Initial heart background color */
+            transition: transform 0.3s, background-color 0.3s; /* Smooth hover effect */
+            font-weight: bold; /* Make text bold */
+        }
+        .heart:hover {
+            transform: scale(1.1); /* Slightly enlarge on hover */
+            background-color: rgba(255, 20, 147, 1); /* Darker background on hover */
+        }
+        .label {
+            position: absolute;
+            bottom: 10px; /* Position label towards bottom */
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 16px; /* Adjust label size */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Welcome to My Personal Website</h1>
+        <h1>RABOTHA LESEGO</h2>
+    </header>
+    <section>
+        <h2>Introduction</h2>
+        <p>Hi, I’m Rabotha Lesego! Welcome to my CV builder. I am currently a student at the University of Limpopo, pursuing a degree in Computer Science. From a young age, I have been fascinated by technology and its potential to change lives. This passion has fueled my ambition to excel in this field and make a meaningful impact.</p>
+
+        <p>As I navigate my academic journey, I find myself deeply engaged in learning about programming, software development, and data analysis. Each project I undertake is not just an assignment; it’s a stepping stone toward mastering the skills that will enable me to solve complex problems. I thrive on challenges, and I actively seek opportunities to participate in coding competitions and hackathons, where I collaborate with peers to create innovative solutions.</p>
+
+        <p>My aspirations extend beyond the classroom. I aim to become a leader in the tech industry, focusing on projects that prioritize social impact and sustainability. I am particularly interested in artificial intelligence and how it can be harnessed to improve efficiency and enhance user experiences. My dream is to contribute to initiatives that leverage technology to address pressing societal challenges.</p>
+
+        <p>This CV builder is designed to showcase my journey, skills, and projects. It reflects my dedication and commitment to excellence, providing a comprehensive overview of my educational background and experiences. I hope this platform not only highlights my qualifications but also helps me connect with like-minded individuals and potential employers who share my passion for technology.</p>
+
+        <p>Thank you for visiting my CV builder! I’m excited about the journey ahead and look forward to what the future holds.</p>
+    </section>
+    <nav>
+        <a class="heart" href="index.html">
+            ❤️
+            <span class="label">Home</span>
+        </a>
+        <a class="heart" href="page1.html">
+            ❤️
+            <span class="label">About Me</span>
+        </a>
+    </nav>
+</body>
+</html>
